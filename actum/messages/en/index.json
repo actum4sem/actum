@@ -1,3 +1,8 @@
+
 {
-  "test": "Hello from English!"
+  "HomePage": {
+    "title": "My staff:",
+    "empty": "No names found.",
+    "test": "Hello from English!"
+  }
 }
