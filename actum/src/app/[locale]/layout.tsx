@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import "./globals.css";
+import "./globals1.css";
 import { Public_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
@@ -16,25 +16,17 @@ const publicSans = Public_Sans({
   weight: ["200", "300", "400", "500", "600", "700"],
 });
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/hga1vzf.css"/>
+        <link rel="stylesheet" href="https://use.typekit.net/hga1vzf.css" />
       </head>
       <body className={`${publicSans.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

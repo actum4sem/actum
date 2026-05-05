@@ -1,1 +1,10 @@
-{}
+{
+  "nav": {
+    "forside": "home",
+    "produkter": "products",
+    "cases": "cases",
+    "faq": "FAQ",
+    "om": "about",
+    "kontakt": "contact"
+  }
+}
