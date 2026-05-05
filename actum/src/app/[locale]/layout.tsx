@@ -29,7 +29,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/hga1vzf.css"/>
+        <link rel="stylesheet" href="https://use.typekit.net/hga1vzf.css" />
       </head>
       <body className={`${publicSans.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>

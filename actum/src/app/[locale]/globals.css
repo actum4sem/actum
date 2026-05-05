@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --page-margin: 1.565rem;
 }
 
 @theme inline {
@@ -20,7 +21,39 @@
 }
 
 body {
+  margin: 0;
+  padding-inline: var(--page-margin);
+
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  display: grid;
+  /* Mobil (default) */
+  grid-template-columns:
+    [full-start content-start] minmax(0, 1fr) [content-end full-end];
+}
+
+.full-bleed {
+  grid-column: full-start / full-end;
+  margin-inline: calc(var(--page-margin) * -1);
+}
+
+.content {
+  grid-column: content-start / content-end;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  body {
+    grid-template-columns:
+      [full-start content-start] repeat(3, minmax(0, 1fr)) [content-end full-end];
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    grid-template-columns:
+      [full-start content-start] repeat(5, minmax(0, 1fr)) [content-end full-end];
+  }
 }
