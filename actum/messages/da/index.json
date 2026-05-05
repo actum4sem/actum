@@ -1,3 +1,7 @@
 {
-  "test": "Hej fra dansk!"
+  "HomePage": {
+    "title": "Mit personale:",
+    "empty": "Ingen navne fundet.",
+    "test": "Hej fra dansk!"
+  }
 }
