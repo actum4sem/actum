@@ -21,6 +21,7 @@
 }
 @theme {
   --font-ocr: "ocr-b", monospace;
+  --font-sans: "public-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -39,7 +40,9 @@ body {
     [content-end]
     var(--page-margin)
     [full-end];
+    grid-template-rows: auto;
 }
+
 
 @media (min-width: 768px) {
   body {
@@ -47,10 +50,11 @@ body {
       [full-start]
       var(--page-margin)
       [content-start]
-      repeat(3, minmax(0, 1fr))
+      repeat(5, minmax(0, 1fr))
       [content-end]
       var(--page-margin)
       [full-end];
+          grid-template-rows: auto;
   }
 }
 
@@ -64,6 +68,7 @@ body {
       [content-end]
       var(--page-margin)
       [full-end];
+          grid-template-rows: auto;
   }
 }
 
