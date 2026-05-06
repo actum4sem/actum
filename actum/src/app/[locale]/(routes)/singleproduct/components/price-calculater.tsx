@@ -24,10 +24,10 @@ export default function PriceCalculator({ materials }: Props) {
     quantity;
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-row gap-10">
+      <div className="flex flex-col gap-4">
         {categories.map((category) => (
-          <div key={category} className="relative mb-7">
+          <div key={category} className="relative min-w-64">
             <select
               className="w-full border border-black p-2 font-mono text-sm uppercase tracking-widest appearance-none bg-white cursor-pointer"
               onChange={(e) => {
@@ -46,7 +46,6 @@ export default function PriceCalculator({ materials }: Props) {
                 ))}
             </select>
             <div className="pointer-events-none absolute right-4 inset-y-0 flex items-center">
-              {" "}
               <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
                 <path d="M1 1L7 7L13 1" stroke="black" strokeWidth="1" />
               </svg>
@@ -54,20 +53,13 @@ export default function PriceCalculator({ materials }: Props) {
           </div>
         ))}
       </div>
-      <div>
-        {/* <label>Antal</label>
-        <input
-          type="number"
-          min={1}
-          value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-        /> */}
+      <div className="m-w-64 justify-end flex flex-col gap-2">
+        <h4 className="text-h4">{totalPrice.toFixed(2)} DKK</h4>
+        <span className="text-gray-400  p-0 text-xs font-ocr">
+          vejledende pris
+        </span>
+        <CtaButton label="Kontakt os" href="/contact" />
       </div>
-      <h4 className="text-h4">{totalPrice.toFixed(2)} DKK</h4>
-      <span className="text-gray-400  p-0 text-xs font-ocr">
-        vejledende pris
-      </span>
-      <CtaButton label="Kontakt os" href="/contact" />
     </div>
   );
 }
