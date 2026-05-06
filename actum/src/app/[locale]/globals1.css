@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --almost-black: #191919;
-  --grey:#A5A5A5;
-  --light-grey:#E7E7E7;
+  --grey: #a5a5a5;
+  --light-grey: #e7e7e7;
   --foreground: var(--almost-black);
   --font-sans: "public-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-ocr: "ocr-b", monospace;
@@ -27,5 +27,14 @@
 body {
   background: var(--background);
   color: var(--foreground);
+
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4 {
   font-family: "ocr-b", monospace;
+  text-transform: lowercase;
 }
