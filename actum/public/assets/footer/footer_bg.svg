@@ -1,13 +1,13 @@
-<svg width="1436" height="520" viewBox="0 0 1436 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1436" height="516" viewBox="0 0 1436 516" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_g_529_5299)">
-<rect x="-36" y="36" width="1507" height="525" fill="#191919"/>
+<rect x="-36" y="32" width="1507" height="525" fill="#191919"/>
 </g>
 <defs>
-<filter id="filter0_g_529_5299" x="-72" y="0" width="1579" height="597" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_g_529_5299" x="-68" y="0" width="1571" height="589" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feTurbulence type="fractalNoise" baseFrequency="0.99900001287460327 0.99900001287460327" numOctaves="3" seed="8913" />
-<feDisplacementMap in="shape" scale="72" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feDisplacementMap in="shape" scale="64" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
 <feMerge result="effect1_texture_529_5299">
 <feMergeNode in="displacedImage"/>
 </feMerge>

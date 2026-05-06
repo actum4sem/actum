@@ -28,8 +28,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       </head>
       <body className={`${publicSans.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-          <Footer />
       
+          <Footer />
       </body>
     </html>
   );

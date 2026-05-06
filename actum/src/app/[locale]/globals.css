@@ -19,6 +19,9 @@
     --foreground: #ffffff;
   }
 }
+@theme {
+  --font-ocr: "ocr-b", monospace;
+}
 
 body {
   margin: 0;
