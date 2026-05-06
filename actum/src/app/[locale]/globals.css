@@ -2,7 +2,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --almost-black: #191919;
+  --grey: #a5a5a5;
+  --light-grey: #e7e7e7;
+  --foreground: var(--almost-black);
+  --font-sans: "public-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ocr: "ocr-b", monospace;
   --page-margin: 1.565rem;
 }
 
@@ -15,8 +20,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #191919;
+    --foreground: #ffffff;
   }
 }
 
@@ -26,12 +31,23 @@ body {
 
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
 
   display: grid;
   /* Mobil (default) */
-  grid-template-columns:
-    [full-start content-start] minmax(0, 1fr) [content-end full-end];
+  grid-template-columns: [full-start content-start] minmax(0, 1fr) [content-end full-end];
 }
+
+/* Fonts */
+h1,
+h2,
+h3,
+h4 {
+  font-family: "ocr-b", monospace;
+  text-transform: lowercase;
+}
+
+/* Grids */
 
 .full-bleed {
   grid-column: full-start / full-end;
@@ -45,15 +61,13 @@ body {
 /* Tablet */
 @media (min-width: 768px) {
   body {
-    grid-template-columns:
-      [full-start content-start] repeat(3, minmax(0, 1fr)) [content-end full-end];
+    grid-template-columns: [full-start content-start] repeat(3, minmax(0, 1fr)) [content-end full-end];
   }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
   body {
-    grid-template-columns:
-      [full-start content-start] repeat(5, minmax(0, 1fr)) [content-end full-end];
+    grid-template-columns: [full-start content-start] repeat(5, minmax(0, 1fr)) [content-end full-end];
   }
 }
