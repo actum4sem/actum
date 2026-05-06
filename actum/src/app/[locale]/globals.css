@@ -35,7 +35,10 @@ body {
 
   display: grid;
   /* Mobil (default) */
-  grid-template-columns: [full-start content-start] minmax(0, 1fr) [content-end full-end];
+  grid-template-columns: [full-start content-start] minmax(
+      0,
+      1fr
+    ) [content-end full-end];
 }
 
 /* Fonts */
@@ -45,6 +48,16 @@ h3,
 h4 {
   font-family: "ocr-b", monospace;
   text-transform: lowercase;
+}
+
+@theme {
+  --font-size-h1: 4.6875rem;
+  --font-size-h2: 3.4375rem;
+  --font-size-h3: 2rem;
+  --font-size-title: 1.25rem;
+  --font-size-body: 1rem;
+
+  --spacing-side: 1.565rem;
 }
 
 /* Grids */
@@ -61,13 +74,19 @@ h4 {
 /* Tablet */
 @media (min-width: 768px) {
   body {
-    grid-template-columns: [full-start content-start] repeat(3, minmax(0, 1fr)) [content-end full-end];
+    grid-template-columns: [full-start content-start] repeat(
+        3,
+        minmax(0, 1fr)
+      ) [content-end full-end];
   }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
   body {
-    grid-template-columns: [full-start content-start] repeat(5, minmax(0, 1fr)) [content-end full-end];
+    grid-template-columns: [full-start content-start] repeat(
+        5,
+        minmax(0, 1fr)
+      ) [content-end full-end];
   }
 }
