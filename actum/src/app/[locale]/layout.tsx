@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import "./globals.css";
 import { Public_Sans } from "next/font/google";
 import Footer from "./(routes)/global_components/footer";
+import Header from "./(routes)/global_components/header";
 
 export const metadata: Metadata = {
   title: "Actum Design og Tryk",
@@ -27,6 +28,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <link rel="stylesheet" href="https://use.typekit.net/hga1vzf.css" />
       </head>
       <body className={`${publicSans.variable} antialiased`}>
+        <Header />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       
           <Footer />
