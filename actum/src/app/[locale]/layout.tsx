@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "./globals1.css";
+import "./globals.css";
 import { Public_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
