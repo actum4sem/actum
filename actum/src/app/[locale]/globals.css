@@ -11,6 +11,18 @@
   --page-margin: 1.565rem;
 }
 
+@theme {
+  --font-size-h1: 4.6875rem;
+  --font-size-h2: 3.4375rem;
+  --font-size-h3: 2rem;
+  --font-size-h4: 1.6rem;
+  --font-size-title: 1.25rem;
+  --font-size-body: 1rem;
+  --font-ocr: "ocr-b", monospace;
+
+  --spacing-side: 1.565rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -47,16 +59,17 @@ h4 {
   text-transform: lowercase;
 }
 
-@theme {
-  --font-size-h1: 4.6875rem;
-  --font-size-h2: 3.4375rem;
-  --font-size-h3: 2rem;
-  --font-size-h4: 1.6rem;
-  --font-size-title: 1.25rem;
-  --font-size-body: 1rem;
-  --font-ocr: "ocr-b", monospace;
-
-  --spacing-side: 1.565rem;
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+h4 {
+  font-size: var(--font-size-h4);
 }
 
 /* Grids */
