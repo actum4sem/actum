@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabaseClient";
 import FullBleedTest from "./fullbleed_test";
+import Hero from "./components_index/hero_section";
 
 export default async function Home() {
   // Hent data fra din nye tabel
@@ -8,19 +9,10 @@ export default async function Home() {
   // if (error) return <div>Fejl: {error.message}</div>;
 
   return (
-    <main className="grid grid-cols-subgrid col-[full-start/full-end]">
+    <main className="full-bleed grid grid-cols-subgrid">
+        <Hero />
       <FullBleedTest />
-      {/* <p>{locale}</p> */}
-      {/* <h1 className="text-2xl font-bold mb-4">Mit personale:</h1>
-      <ul className="list-disc pl-5">
-        {data?.map((person) => (
-          <li key={person.id} className="text-lg">
-            {person.name}
-          </li>
-        ))}
-      </ul>
-      {data?.length === 0 && <p>Ingen navne fundet.</p>} */}
-      {/* <TestBanner locale={locale} /> */}
+  
     </main>
   );
 }
