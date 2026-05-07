@@ -41,6 +41,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: {
       ...(await import(`../messages/${locale}/index.json`)).default,
       ...(await import(`../messages/${locale}/global.json`)).default,
+      ...(await import(`../messages/${locale}/contact.json`)).default,
     },
   };
 });
