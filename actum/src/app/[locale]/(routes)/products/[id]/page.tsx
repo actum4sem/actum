@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabaseClient";
 import PriceCalculator from "./components/price_calculator";
 import Images from "./components/images";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 type Product = {
   id: number;
@@ -36,6 +37,16 @@ export default async function SingleProductPage({
     <main className="full-bleed grid grid-cols-subgrid">
       <section className="content flex gap-20 col-span-2">
         <div className="max-w-xl">
+          <p className="font-ocr text-xs font-grey">
+            <Link
+              href="/products"
+              className="no-underline transition-opacity duration-200 hover:opacity-70"
+            >
+              Produkter
+            </Link>
+            {" / "}
+            <span>{product.name}</span>
+          </p>
           <Images pics={product.pics ?? []} />
         </div>
         <div className="flex flex-col gap-10 justify-stretch max-w-2xl ml-auto">
