@@ -5,7 +5,9 @@
     "cases": "cases",
     "faq": "FAQ",
     "om": "about",
-    "kontakt": "contact"
+    "kontakt": "contact",
+     "menu": "menu",
+    "luk": "close"
   },
    "footer": {
     "kontakt": "Contact",
