@@ -13,7 +13,7 @@ export default function MobileMenu({ links }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="col-[3/content-end] flex justify-end items-center md:hidden">
+<div className="col-[4/content-end] flex justify-end items-center lg:hidden">
       <button onClick={() => setOpen(true)} className="font-ocr text-sm tracking-wide">
         menu
       </button>

@@ -1,9 +1,13 @@
+import { useTranslations } from "next-intl"
 import HeroLogo from "./hero_logo";
 import Image from "next/image";
-import { motion, useTransform, useScroll } from "framer-motion";
+
 
 export default function Hero() {
+      const t = useTranslations("hero")
+
   return (
+    
     <section className="full-bleed grid grid-cols-subgrid grid-rows-[auto_auto_auto_auto]  overflow-hidden ">
       {/* Billeder */}
       <div className="col-[full-start/content-end] row-[1/3] grid grid-cols-3 gap-6">
@@ -23,11 +27,11 @@ export default function Hero() {
       <HeroLogo />
       {/* Titel */}
       <div className="content row-start-4">
-        <h1 className="font-sans text-[8vw] leading-none tracking-wide md:text-[5vw]">design og tryk</h1>
+        <h1 className="font-sans text-[8vw] leading-none tracking-wide md:text-[5vw]">{t("titel")}</h1>
       </div>
       {/* Tekst */}
       <div className="col-[content-start/content-end] row-start-5 pt-5 md:col-[content-start/4]">
-        <p className="text-base ">Du har en opgave, der skal løses. Vi tager den ind, sætter filerne op og leverer til tiden. Uanset om det er visitkort, menukort eller bannere til næste event.</p>
+        <p className="text-base indent-20">{t("tekst")}</p>
       </div>
       {/* Prikker */}
       <div className="col-[4/full-end] row-[2/6] self-start justify-self-end absolute">
