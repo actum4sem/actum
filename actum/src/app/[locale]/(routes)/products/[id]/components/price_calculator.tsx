@@ -26,13 +26,6 @@ export default function PriceCalculator({ materials }: Props) {
   return (
     // *********************** højde ***********************
     <div className="flex flex-col justify-between h-full">
-      <h1>Bogprint</h1>
-      <p className="indent-36">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
-        quasi, illum praesentium voluptatem dignissimos, nisi consequuntur ipsam
-        itaque at delectus ea dolor, quae cupiditate? Sunt expedita consectetur
-        rerum earum culpa.
-      </p>
       <div className="flex flex-row gap-20 ml-auto">
         <div className="flex flex-col gap-4">
           {categories.map((category) => (

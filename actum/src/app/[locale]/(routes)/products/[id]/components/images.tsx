@@ -2,18 +2,15 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const images = [
-  "/product_images/pic1.png",
-  "/product_images/pic2.png",
-  "/product_images/pic3.png",
-];
+type Props = {
+  pics: string[];
+};
 
-export default function ImageGallery() {
-  const [activeImage, setActiveImage] = useState(images[0]);
+export default function ImageGallery({ pics }: Props) {
+  const [activeImage, setActiveImage] = useState(pics[0]);
 
   return (
     <div className="flex gap-2 flex-row">
-      {/* Stort aktivt billede */}
       <figure>
         <Image
           src={activeImage}
@@ -22,10 +19,8 @@ export default function ImageGallery() {
           alt="Aktivt billede"
         />
       </figure>
-
-      {/* Thumbnails */}
       <div className="flex flex-col gap-2">
-        {images.map((img) => (
+        {pics.map((img) => (
           <button
             key={img}
             onClick={() => setActiveImage(img)}
