@@ -22,6 +22,31 @@
 @theme {
   --font-ocr: "ocr-b", monospace;
   --font-sans: "public-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --font-size-h1: 4.6875rem;
+  --font-size-h2: 3.4375rem;
+  --font-size-h3: 2rem;
+  --font-size-h4: 1.6rem;
+  --font-size-title: 1.25rem;
+  --font-size-p: 1rem;
+}
+
+@layer base {
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+  h4 {
+    font-size: var(--font-size-h4);
+  }
+  p {
+    font-size: var(--font-size-p);
+  }
 }
 
 body {
@@ -40,9 +65,8 @@ body {
     [content-end]
     var(--page-margin)
     [full-end];
-    grid-template-rows: auto;
+  grid-template-rows: auto;
 }
-
 
 @media (min-width: 768px) {
   body {
@@ -54,7 +78,7 @@ body {
       [content-end]
       var(--page-margin)
       [full-end];
-          grid-template-rows: auto;
+    grid-template-rows: auto;
   }
 }
 
@@ -68,7 +92,7 @@ body {
       [content-end]
       var(--page-margin)
       [full-end];
-          grid-template-rows: auto;
+    grid-template-rows: auto;
   }
 }
 

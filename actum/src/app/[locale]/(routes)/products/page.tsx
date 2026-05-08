@@ -1,19 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
-import { link } from "fs";
+import { Fragment } from "react";
 
 type Product = {
   id: number;
   name: string;
   description: string;
   pics: string[];
+  editorial_text: string | null;
+  sort_by: number;
 };
 
 export default async function ProductsPage() {
   const { data: products, error } = await supabase
     .from("products")
-    .select("id, name, description, pics");
+    .select("id, name, description, pics, editorial_text, sort_by")
+    .order("sort_by");
 
   if (error) {
     console.error(error);
@@ -28,7 +31,6 @@ export default async function ProductsPage() {
     "aspect-[16/9]",
   ];
 
-  // Inde i din komponent, over return:
   const getAspectRatio = (id: number) => aspectRatios[id % aspectRatios.length];
 
   return (
@@ -38,9 +40,9 @@ export default async function ProductsPage() {
           {products.map((product) => (
             <Link href={`/products/${product.id}`} key={product.id}>
               <li className="flex flex-col gap-2">
-                <div>[ {product.id} ]</div>
+                <div>[ {product.sort_by} ]</div>
                 <p>{product.name}</p>
-                {product.pics?.[0] && product.pics[0] !== "null" && (
+                {product.pics?.[0] && product.pics[0] !== "null" ? (
                   <div
                     className={`relative w-full ${getAspectRatio(product.id)} overflow-hidden`}
                   >
@@ -51,7 +53,9 @@ export default async function ProductsPage() {
                       className="object-cover"
                     />
                   </div>
-                )}
+                ) : product.editorial_text ? (
+                  <p>{product.editorial_text}</p>
+                ) : null}
               </li>
             </Link>
           ))}

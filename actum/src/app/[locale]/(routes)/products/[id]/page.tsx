@@ -31,13 +31,27 @@ export default async function SingleProductPage({
   if (error || !product) return notFound();
 
   const { data: materials } = await supabase.from("materials").select("*");
-  console.log("pics type:", typeof product.pics, product.pics);
 
   return (
     <main className="full-bleed grid grid-cols-subgrid">
-      <section className="content flex gap-20 col-span-2">
-        <div className="max-w-xl">
-          <p className="font-ocr text-xs font-grey">
+      <section className="content col-span-2 flex flex-col gap-6 lg:flex-row lg:gap-20">
+        {/* Breadcrumb — visible on desktop above images, on mobile above images too */}
+        <div className="lg:hidden">
+          <p className="font-ocr text-xs text-grey">
+            <Link
+              href="/products"
+              className="no-underline transition-opacity duration-200 hover:opacity-70"
+            >
+              Produkter
+            </Link>
+            {" / "}
+            <span>{product.name}</span>
+          </p>
+        </div>
+
+        {/* Images — full width on mobile, constrained on desktop */}
+        <div className="w-full lg:max-w-xl lg:shrink-0">
+          <p className="hidden lg:block font-ocr text-xs text-grey mb-2">
             <Link
               href="/products"
               className="no-underline transition-opacity duration-200 hover:opacity-70"
@@ -49,7 +63,9 @@ export default async function SingleProductPage({
           </p>
           <Images pics={product.pics ?? []} />
         </div>
-        <div className="flex flex-col gap-10 justify-stretch max-w-2xl ml-auto">
+
+        {/* Product info + price calculator */}
+        <div className="flex flex-col gap-10 justify-stretch lg:max-w-2xl lg:ml-auto w-full">
           <h1>{product.name}</h1>
           <p className="indent-36">{product.description}</p>
           <PriceCalculator materials={materials ?? []} />
