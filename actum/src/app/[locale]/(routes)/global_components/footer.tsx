@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import LanguageSwitch from "./language_switch";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -32,6 +33,7 @@ export default function Footer() {
           <p>{t("lordag")}</p>
           <p>{t("sondag")}</p>
         </div>
+        <LanguageSwitch />
       </div>
 
       {/* Logo + til toppen */}

@@ -5,8 +5,11 @@
     "cases": "cases",
     "faq": "FAQ",
     "om": "om os",
-    "kontakt": "kontakt"
+    "kontakt": "kontakt",
+      "menu": "menu",
+    "luk": "luk"
   },
+ 
   "footer": {
     "kontakt": "Kontakt",
     "navn": "Actum Design & Tryk",
