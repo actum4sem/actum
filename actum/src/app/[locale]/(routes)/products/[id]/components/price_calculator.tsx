@@ -26,7 +26,7 @@ export default function PriceCalculator({ materials }: Props) {
   return (
     // *********************** højde ***********************
     <div className="flex flex-col justify-between h-full">
-      <div className="flex flex-wrap gap-x-20 gap-y-8 justify-center md:justify-end">
+      <div className="flex flex-wrap gap-x-20 gap-y-8 justify-start lg:justify-end">
         <div className="flex flex-col gap-4">
           {categories.map((category) => (
             <div key={category} className="relative min-w-64">
