@@ -7,11 +7,11 @@ import { motion, useScroll, useTransform } from "framer-motion"
 // Type der matcher cases tabellen i Supabase
 type Case = {
     id: number
-    titel: string
-    beskrivelse: string
-    billede_url: string
-    orientering: string
-    orden: number
+    title: string
+    description: string
+    image_url: string
+    orientation: string
+    order: number
 }
 
 // Props for CaseItem komponenten — modtager et caseItem af typen Case
@@ -43,28 +43,28 @@ export default function CaseItem({ caseItem }: Props) {
 
     return (
         <>
-            <div id={`case-${caseItem.orden}`} className="col-span-1 flex flex-col items-end md:items-center">
-                {caseItem.billede_url && (
+            <div id={`case-${caseItem.order}`} className="col-span-1 flex flex-col items-end md:items-center">
+                {caseItem.image_url && (
 
                     // motion.div håndterer clip-path animationen
                     // ref er sat her så useScroll kan måle scroll-progress relativt til billedet
                     <motion.div ref={ref} style={{ clipPath }}>
                         <Image
-                            src={caseItem.billede_url.trim()}
-                            alt={caseItem.titel}
-                            width={caseItem.orientering === "vertikal" ? 400 : 800}
-                            height={caseItem.orientering === "vertikal" ? 900 : 600}
-                            className={caseItem.orientering === "vertikal"
+                            src={caseItem.image_url.trim()}
+                            alt={caseItem.title}
+                            width={caseItem.orientation === "vertikal" ? 400 : 800}
+                            height={caseItem.orientation === "vertikal" ? 900 : 600}
+                            className={caseItem.orientation === "vertikal"
                                 ? "h-auto md:w-2/3"
                                 : "w-full h-auto"}
                         />
                     </motion.div>
                 )}
-                <p className="md:hidden">{caseItem.beskrivelse}</p>
+                <p className="md:hidden">{caseItem.description}</p>
             </div>
 
             <div className="hidden md:flex justify-center items-center">
-                <p>{caseItem.beskrivelse}</p>
+                <p>{caseItem.description}</p>
             </div>
         </>
     )

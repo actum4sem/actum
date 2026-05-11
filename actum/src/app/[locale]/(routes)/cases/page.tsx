@@ -5,11 +5,11 @@ import CasesNav from "./components/case_nav"
 // TypeScript type der matcher vores Supabase tabel
 type Case = {
     id: number
-    titel: string
-    beskrivelse: string
-    billede_url: string
-    orientering: string
-    orden: number
+    title: string
+    description: string
+    image_url: string
+    orientation: string
+    order: number
 }
 
 export default async function CasesPage() {
@@ -17,12 +17,12 @@ export default async function CasesPage() {
     const { data: cases, error } = await supabase
         .from("cases")
         .select("*")
-        .order("orden", { ascending: true })
+        .order("order", { ascending: true })
 
     // Fejlhåndtering ved hentning af data
-    if (error) {
-        console.error("Fejl ved hentning af cases:", error)
-    }
+    // if (error) {
+    //     console.error("Fejl ved hentning af cases:", error)
+    // }
 
     return (
         <main className="full-bleed grid grid-cols-subgrid">
