@@ -3,6 +3,7 @@ import FullBleedTest from "./fullbleed_test";
 import Hero from "./components_index/hero_section";
 import AboutSection from "./components_index/about_section";
 import FaqSection from "./components_index/faq_section";
+import VideoSection from "./components_index/video_section";
 
 export default function Home() {
   // Hent data fra din nye tabel
@@ -14,6 +15,7 @@ export default function Home() {
     <main className="full-bleed grid grid-cols-subgrid">
         <Hero />
       <FullBleedTest />
+      <VideoSection />
         <AboutSection />
         <FaqSection />
     </main>

@@ -1,13 +1,11 @@
-import { useTranslations } from "next-intl"
+import { useTranslations } from "next-intl";
 import HeroLogo from "./hero_logo";
 import Image from "next/image";
 
-
 export default function Hero() {
-      const t = useTranslations("hero")
+  const t = useTranslations("hero");
 
   return (
-    
     <section className="full-bleed grid grid-cols-subgrid grid-rows-[auto_auto_auto_auto]  overflow-hidden ">
       {/* Billeder */}
       <div className="col-[full-start/content-end] row-[1/3] grid grid-cols-3 gap-6">
@@ -34,8 +32,8 @@ export default function Hero() {
         <p className="text-base indent-20">{t("tekst")}</p>
       </div>
       {/* Prikker */}
-      <div className="col-[4/full-end] row-[2/6] self-start justify-self-end absolute">
-        <Image src="/assets/global/dots_big_group.svg" alt="" width={520} height={720} className="w-[32vw] max-w-[520px]" />
+      <div className="col-[4/full-end] row-[2/6] self-start justify-self-end z-10">
+        <Image src="/assets/global/dots_big_group.svg" alt="" width={520} height={720} className="w-[32vw] max-w-130" />
       </div>
     </section>
   );
