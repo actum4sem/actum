@@ -1,0 +1,76 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
+// Vi definerer kun de felter fra Supabase som navigationen har brug for
+type Case = {
+    id: number
+    titel: string
+    orden: number
+}
+// Komponenten modtager en liste af cases fra CasesPage
+type Props = {
+    cases: Case[]
+}
+
+export default function CasesNav({ cases }: Props) {
+    // activeId holder orden-nummeret på den case der er synlig i viewport
+    // Starter som null fordi ingen case er aktiv når siden loader
+    const [activeId, setActiveId] = useState<number | null>(null)
+
+    useEffect(() => {
+        // Looper gennem alle cases og opretter en IntersectionObserver pr. case
+        // IntersectionObserver er et browser-API der overvåger om et element er synligt i viewport
+        const observers = cases.map((caseItem) => {
+
+            // Vi finder det HTML-element der matcher case-elementets id
+            // id'erne er sat i CaseItem som id={`case-${caseItem.orden}`}
+            const el = document.getElementById(`case-${caseItem.orden}`)
+
+            // Hvis elementet ikke findes i DOM'en, stopper vi og returnerer null
+            if (!el) return null
+
+            // Vi opretter en ny observer der overvåger elementet
+            // [entry] er en destrukturering — vi får altid kun ét element tilbage fra vores observer
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+
+                    // isIntersecting er true når elementet er synligt i viewport
+                    // Når det sker, opdaterer vi activeId til denne cases orden-nummer
+                    if (entry.isIntersecting) setActiveId(caseItem.orden)
+                },
+                // threshold: 0.5 betyder at elementet skal være 50% synligt før det tæller som aktivt
+                { threshold: 0.5 } // 0.5 = elementet skal være 50% synligt
+            )
+            // Vi starter overvågningen af elementet
+            observer.observe(el)
+            // Vi returnerer observeren så vi kan stoppe den igen i cleanup
+            return observer
+        })
+
+        // Cleanup-funktion — kører når komponenten fjernes fra siden eller når cases ændrer sig
+        // Vi disconnecter alle observers så de ikke kører unødigt i baggrunden
+        return () => observers.forEach((o) => o?.disconnect())
+
+    }, [cases])// Effecten kører igen hvis cases-listen ændrer sig
+
+    return (
+        <nav className="sticky self-start top-1/2 -translate-y-1/2 md:top-30 md:translate-y-0"
+            style={{ gridRow: `span ${cases.length}` }}
+        >
+            {cases.map((caseItem) => (
+                <a
+                    key={caseItem.id}
+                    // Sender brugeren til det tilsvarende case-element på siden
+                    href={`#case-${caseItem.orden}`}
+                    // Aktiv case er fuldt synlig, inaktive cases er nedtonede til 40% opacity (og nav afstand 44px (py-3) på mobil - google anbefaling)
+                    className={`block py-3 md:py-0 ${activeId === caseItem.orden ? "opacity-100" : "opacity-40"}`}
+                >
+                    {/* sørger for at konvertere til string og orden altid vises med to cifre */}
+                    <p>{caseItem.titel} - {String(caseItem.orden).padStart(2, "0")}</p>
+                </a>
+            ))
+            }
+        </nav >
+    )
+}
