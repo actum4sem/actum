@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 export async function getPopularProducts() {
   const { data, error } = await supabase
     .from("products")
-    .select("*")
+    .select("id, name, description, pics, editorial_text, sort_by")
     .eq("is_popular", true)
     .order("sort_by");
 
