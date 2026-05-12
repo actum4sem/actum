@@ -62,22 +62,30 @@ export default function FaqGallery({ images }: Props) {
 
   if (!images || images.length === 0) return null;
 
-  return (
- 
-<div className="col-[content-start/content-end] md:col-[content-start/4] flex flex-col md:grid md:grid-cols-2 md:order-first gap-2 ">
-  {[col1, col2].map((col, colIndex) => (
-    <div key={colIndex} className="flex flex-row md:flex-col gap-2">
-      {col.map((url, index) => (
-        <div key={index} className={`relative w-full overflow-hidden ${getAspectRatio(colIndex * 3 + index)}`}>
-              <AnimatePresence mode="wait">
-                <motion.div key={url} initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} transition={{ duration: 1.5, ease: "easeInOut" }} className="absolute inset-0">
-                  <Image src={url} alt="" fill className="object-cover" />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  return  (
+  <div className="col-[content-start/content-end] md:col-[content-start/4] md:row-start-2 flex flex-col md:grid md:grid-cols-2 gap-2">
+    {[col1, col2].map((col, colIndex) => (
+      <div key={colIndex} className="flex flex-row md:flex-col gap-2">
+        {col.map((url, index) => (
+          <div key={index} className={`relative w-full overflow-hidden ${getAspectRatio(colIndex * 3 + index)}`}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={url}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <Image src={url} alt="" fill className="object-cover" />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+)
+
+;
 }
