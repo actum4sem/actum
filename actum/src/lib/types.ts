@@ -23,3 +23,19 @@ export type Case = {
   orientation: string;
   order: number;
 };
+
+export type TeamMember = {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  image_url: string;
+  display_order: number;
+};
+
+export type ContactFormData = {
+  email: string;
+  name: string;
+  phone: string;
+  message: string;
+};
