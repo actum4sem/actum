@@ -14,3 +14,12 @@ export type Material = {
   price_per_unit: number;
   category: string;
 };
+
+export type Case = {
+  id: number;
+  title: string;
+  description: string;
+  image_url: string;
+  orientation: string;
+  order: number;
+};

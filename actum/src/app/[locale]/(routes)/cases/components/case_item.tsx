@@ -3,16 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-// Type der matcher cases tabellen i Supabase
-type Case = {
-  id: number;
-  title: string;
-  description: string;
-  image_url: string;
-  orientation: string;
-  order: number;
-};
+import { Case } from "@/lib/types";
 
 // Props for CaseItem komponenten — modtager et caseItem af typen Case
 type Props = {
@@ -44,16 +35,12 @@ export default function CaseItem({ caseItem }: Props) {
     <>
       <div
         id={`case-${caseItem.order}`}
-        className="col-span-3 flex flex-col items-end md:items-center"
+        className="col-span-2 md:col-span-4 flex flex-col items-center"
       >
         {caseItem.image_url && (
           // motion.div håndterer clip-path animationen
           // ref er sat her så useScroll kan måle scroll-progress relativt til billedet
-          <motion.div
-            ref={ref}
-            style={{ clipPath }}
-            className="w-full flex justify-center"
-          >
+          <motion.div ref={ref} style={{ clipPath }} className="w-full">
             <Image
               src={caseItem.image_url.trim()}
               alt={caseItem.title}
@@ -63,10 +50,7 @@ export default function CaseItem({ caseItem }: Props) {
             />
           </motion.div>
         )}
-        <p className="md:hidden">{caseItem.description}</p>
-      </div>
-
-      <div className="hidden md:flex justify-center items-center">
+        {/* Beskrivelse vises under billedet på alle skærmstørrelser */}
         <p>{caseItem.description}</p>
       </div>
     </>
