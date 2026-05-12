@@ -1,23 +1,11 @@
-import { supabase } from "@/lib/supabaseClient";
-import { getRelatedProducts } from "@/lib/products";
 import PriceCalculator from "./components/price_calculator";
 import Images from "./components/images";
 import ProductGrid from "../../global_components/product_grid";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  pics: string[];
-  category: string;
-};
-
-type Material = {
-  id: number;
-  name: string;
-};
+import { getProductById } from "@/lib/products";
+import { getRelatedProducts } from "@/lib/products";
+import { getMaterials } from "@/lib/materials";
 
 export default async function SingleProductPage({
   params,
@@ -26,19 +14,14 @@ export default async function SingleProductPage({
 }) {
   const { id } = await params;
 
-  const { data: product, error } = await supabase
-    .from("products")
-    .select("id, name, description, pics, category")
-    .eq("id", id)
-    .single();
-  if (error || !product) return notFound();
+  const product = await getProductById(id);
+  if (!product) return notFound();
+  if (!product.category) return notFound(); // ← tilføj denne linje
 
-  const { data: materials } = await supabase.from("materials").select("*");
-
-  const relatedProducts = await getRelatedProducts(
-    product.id,
-    product.category,
-  );
+  const [materials, relatedProducts] = await Promise.all([
+    getMaterials(),
+    getRelatedProducts(product.id, product.category),
+  ]);
 
   return (
     <main className="full-bleed grid grid-cols-subgrid">
@@ -79,7 +62,7 @@ export default async function SingleProductPage({
       <ProductGrid
         products={relatedProducts ?? []}
         title="Relaterede produkter"
-      />{" "}
+      />
     </main>
   );
 }

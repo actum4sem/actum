@@ -2,6 +2,7 @@ import { getPopularProducts } from "@/lib/products";
 import ProductGrid from "@/app/[locale]/(routes)/global_components/product_grid";
 import FullBleedTest from "./fullbleed_test";
 import Hero from "./components_index/hero_section";
+import { Product } from "@/lib/types";
 
 export default async function Home() {
   const popularProducts = await getPopularProducts();
