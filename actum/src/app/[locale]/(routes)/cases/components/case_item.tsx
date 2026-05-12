@@ -3,37 +3,18 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-// Type der matcher cases tabellen i Supabase
-type Case = {
-  id: number;
-  title: string;
-  description: string;
-  image_url: string;
-  orientation: string;
-  order: number;
-};
+import { Case } from "@/lib/types";
 
 // Props for CaseItem komponenten — modtager et caseItem af typen Case
 type Props = {
   caseItem: Case;
 };
-
 export default function CaseItem({ caseItem }: Props) {
-  // useRef bruges til at måle scroll-progress relativt til dette element
   const ref = useRef(null);
-
-  // useScroll måler hvor langt man har scrollet relativt til elementet
-  // start end = når elementets top rammer viewport bund (elementet er lige ved at komme ind)
-  // center center = når elementets midte rammer viewport midte
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "center center"],
   });
-
-  // useTransform konverterer scroll-progress (0 til 1) til en clip-path værdi
-  // Ved 0% scroll er billedet skjult — clip-path skjuler alt fra midten
-  // Ved 100% scroll er billedet fuldt synligt — clip-path er væk
   const clipPath = useTransform(
     scrollYProgress,
     [0, 1],
@@ -42,33 +23,28 @@ export default function CaseItem({ caseItem }: Props) {
 
   return (
     <>
-      <div
+      {/* Billede */}
+      <motion.div
         id={`case-${caseItem.order}`}
-        className="col-span-3 flex flex-col items-end md:items-center"
+        ref={ref}
+        style={{ clipPath }}
+        className="col-span-2 md:col-span-3"
       >
         {caseItem.image_url && (
-          // motion.div håndterer clip-path animationen
-          // ref er sat her så useScroll kan måle scroll-progress relativt til billedet
-          <motion.div
-            ref={ref}
-            style={{ clipPath }}
-            className="w-full flex justify-center"
-          >
-            <Image
-              src={caseItem.image_url.trim()}
-              alt={caseItem.title}
-              width={800}
-              height={900}
-              className="w-full h-auto"
-            />
-          </motion.div>
+          <Image
+            src={caseItem.image_url.trim()}
+            alt={caseItem.title}
+            width={800}
+            height={900}
+            className="w-full h-auto"
+          />
         )}
-        <p className="md:hidden">{caseItem.description}</p>
-      </div>
+      </motion.div>
 
-      <div className="hidden md:flex justify-center items-center">
-        <p>{caseItem.description}</p>
-      </div>
+      {/* Tekst — under billede på mobil, kolonne 5 på desktop */}
+      <p className="col-span-2 md:col-span-1 items-center flex">
+        {caseItem.description}
+      </p>
     </>
   );
 }

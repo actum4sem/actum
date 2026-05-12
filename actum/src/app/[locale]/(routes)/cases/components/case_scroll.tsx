@@ -1,24 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { Case } from "@/lib/types";
 
-// Type der matcher cases tabellen i Supabase
-type Case = {
-  id: number;
-  titel: string;
-  beskrivelse: string;
-  billede_url: string;
-  orientering: string;
-  orden: number;
-};
-
+// Komponenten modtager en liste af cases fra CasesPage
 type Props = {
   cases: Case[];
 };
@@ -41,8 +28,8 @@ export default function CasesScroll({ cases }: Props) {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    // Containeren er 300vh høj så der er nok scroll-rum til animationen
-    // col-span-2 på mobil og md:col-span-2 på desktop så den fylder kolonne 2 og 3
+    // Containeren er dynamic høj baseret på antal cases så der er nok scroll-rum til animationen
+    // col-span-1 på mobil og md:col-span-3 på desktop
     <div
       ref={containerRef}
       className="col-span-1 md:col-span-3"
@@ -56,24 +43,24 @@ export default function CasesScroll({ cases }: Props) {
             // Hvert case-element har sit eget id så navigationen kan referere til det
             <div
               key={caseItem.id}
-              id={`case-${caseItem.orden}`}
-              className="flex-shrink-0 flex flex-col gap-4"
+              id={`case-${caseItem.order}`}
+              className="shrink-0 flex flex-col gap-4"
               style={{ width: "60vw" }}
             >
-              {caseItem.billede_url && (
+              {caseItem.image_url && (
                 <Image
-                  src={caseItem.billede_url.trim()}
-                  alt={caseItem.titel}
-                  width={caseItem.orientering === "vertikal" ? 400 : 800}
-                  height={caseItem.orientering === "vertikal" ? 900 : 600}
+                  src={caseItem.image_url.trim()}
+                  alt={caseItem.title}
+                  width={caseItem.orientation === "vertikal" ? 400 : 800}
+                  height={caseItem.orientation === "vertikal" ? 900 : 600}
                   className={
-                    caseItem.orientering === "vertikal"
+                    caseItem.orientation === "vertikal"
                       ? "h-[70vh] w-auto"
                       : "w-full h-auto"
                   }
                 />
               )}
-              <p>{caseItem.beskrivelse}</p>
+              <p>{caseItem.description}</p>
             </div>
           ))}
         </motion.div>
