@@ -15,7 +15,7 @@ export default function FaqPageSection({ faqs }: Props) {
 
   return (
     
-    <section className="col-[content-start/content-end] md:col-[4/content-end] md:pl-2 pb-2 md:pb-0">
+<section className="col-[content-start/content-end] md:col-[4/content-end] md:row-start-2 md:pl-2 pb-2 md:pb-0">
 
       <div className="flex flex-col">
         {faqs.map((faq) => (

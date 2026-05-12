@@ -19,46 +19,89 @@ export default function PriceCalculator({ materials }: Props) {
 
   return (
     // *********************** højde ***********************
-    <div className="flex flex-col justify-between h-full">
-      <div className="flex flex-wrap gap-x-20 gap-y-8 justify-start lg:justify-end">
-        <div className="flex flex-col gap-4">
-          {categories.map((category) => (
-            <div key={category} className="relative min-w-64">
-              <select
-                className="w-full border border-black p-2 font-mono text-sm uppercase tracking-widest appearance-none bg-white cursor-pointer"
-                onChange={(e) => {
-                  const material = materials.find(
-                    (m) => m.id === Number(e.target.value),
-                  );
-                  if (material)
-                    setSelected((prev) => ({ ...prev, [category]: material }));
-                }}
-              >
-                <option>{category}</option>
-                {materials
-                  .filter((m) => m.category === category)
-                  .map((m) => (
-                    <option key={m.id} value={m.id}>
-                      {m.name}
-                    </option>
-                  ))}
-              </select>
-              <div className="pointer-events-none absolute right-4 inset-y-0 flex items-center">
-                <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-                  <path d="M1 1L7 7L13 1" stroke="black" strokeWidth="1" />
-                </svg>
-              </div>
-            </div>
-          ))}
+    // <div className="flex flex-col justify-between h-full">
+    //   <div className="flex flex-wrap gap-x-20 gap-y-8 justify-start ">
+    //     <div className="flex flex-col gap-4">
+    //       {categories.map((category) => (
+    //         <div key={category} className="relative min-w-64">
+    //           <select
+    //             className="w-full border border-black p-2 font-mono text-sm uppercase tracking-widest appearance-none bg-white cursor-pointer"
+    //             onChange={(e) => {
+    //               const material = materials.find(
+    //                 (m) => m.id === Number(e.target.value),
+    //               );
+    //               if (material)
+    //                 setSelected((prev) => ({ ...prev, [category]: material }));
+    //             }}
+    //           >
+    //             <option>{category}</option>
+    //             {materials
+    //               .filter((m) => m.category === category)
+    //               .map((m) => (
+    //                 <option key={m.id} value={m.id}>
+    //                   {m.name}
+    //                 </option>
+    //               ))}
+    //           </select>
+    //           <div className="pointer-events-none absolute right-4 inset-y-0 flex items-center">
+    //             <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+    //               <path d="M1 1L7 7L13 1" stroke="black" strokeWidth="1" />
+    //             </svg>
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
+    //     <div className="justify-end flex flex-col gap-2">
+    //       <h4 className="text-h4">{totalPrice.toFixed(2)} DKK</h4>
+    //       <span className="text-gray-400  p-0 text-xs font-ocr">
+    //         vejledende pris
+    //       </span>
+    //       <CtaButton label="Kontakt os" href="/contact" />
+    //     </div>
+    //   </div>
+    // </div>
+
+
+<div className="flex flex-col justify-between h-full">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
+    
+    {/* Venstre – dropdowns */}
+    <div className="flex flex-col gap-4">
+      {categories.map((category) => (
+        <div key={category} className="relative min-w-64">
+          <select
+            className="w-full border border-black p-2 font-mono text-sm tracking-widest appearance-none bg-white cursor-pointer"
+            onChange={(e) => {
+              const material = materials.find((m) => m.id === Number(e.target.value))
+              if (material) setSelected((prev) => ({ ...prev, [category]: material }))
+            }}
+          >
+            <option>{category}</option>
+            {materials
+              .filter((m) => m.category === category)
+              .map((m) => (
+                <option key={m.id} value={m.id}>
+                  {m.name}
+                </option>
+              ))}
+          </select>
+          <div className="pointer-events-none absolute right-4 inset-y-0 flex items-center">
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+              <path d="M1 1L7 7L13 1" stroke="black" strokeWidth="1" />
+            </svg>
+          </div>
         </div>
-        <div className="justify-end flex flex-col gap-2">
-          <h4 className="text-h4">{totalPrice.toFixed(2)} DKK</h4>
-          <span className="text-gray-400  p-0 text-xs font-ocr">
-            vejledende pris
-          </span>
-          <CtaButton label="Kontakt os" href="/contact" />
-        </div>
-      </div>
+      ))}
     </div>
+
+    {/* Højre – pris og knap */}
+    <div className="flex flex-col gap-2 justify-end">
+      <h4>{totalPrice.toFixed(2)} DKK</h4>
+      <span className="text-gray-400 text-xs font-ocr">vejledende pris</span>
+      <CtaButton label="Kontakt os" href="/contact" />
+    </div>
+
+  </div>
+</div>
   );
 }
