@@ -38,7 +38,10 @@ export default async function TeamSection() {
 
   return (
     //overvej gap el flere kolonner
-    <section className="content grid gap-20 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+    <section
+      className="content grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8
+"
+    >
       {members.map((member) => (
         <article key={member.id} className="flex flex-col">
           <MemberImage src={member.image_url} alt={member.name} />
