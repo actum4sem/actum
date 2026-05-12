@@ -1,20 +1,20 @@
 {
-    "contact": {
-        "titel": "kontakt",
-        "email": "email",
-        "navn": "navn",
-        "telefon": "telefon",
-        "besked": "besked",
-        "submit": "send",
-        "fejl": {
-            "email": "Ugyldig email",
-            "navn": "Navn skal være mindst 2 tegn",
-            "telefon": "Telefonnummer skal være mindst 8 tegn",
-            "besked": "Besked skal være mindst 10 tegn"
-        },
-        "sending": "sender...",
-        "sent": "besked sendt",
-        "error": "noget gik galt",
-        "beskrivelse": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
+  "contact": {
+    "title": "kontakt",
+    "email": "email",
+    "name": "navn",
+    "phone": "telefon",
+    "message": "besked",
+    "submit": "send",
+    "errors": {
+      "email": "Ugyldig email",
+      "name": "Navn skal være mindst 2 tegn",
+      "phone": "Telefonnummer skal være mindst 8 tegn",
+      "message": "Besked skal være mindst 10 tegn"
+    },
+    "sending": "sender...",
+    "sent": "besked sendt",
+    "error": "noget gik galt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  }
 }

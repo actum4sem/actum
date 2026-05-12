@@ -1,20 +1,20 @@
 {
-    "contact": {
-        "titel": "contact",
-        "email": "email",
-        "navn": "name",
-        "telefon": "phone",
-        "besked": "message",
-        "submit": "submit",
-        "fejl": {
-            "email": "Invalid email",
-            "navn": "Name must be at least 2 characters",
-            "telefon": "Phone number must be at least 8 characters",
-            "besked": "Message must be at least 10 characters"
-        },
-        "sending": "sending...",
-        "sent": "message sent",
-        "error": "something went wrong",
-        "beskrivelse": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
+  "contact": {
+    "title": "contact",
+    "email": "email",
+    "name": "name",
+    "phone": "phone",
+    "message": "message",
+    "submit": "send",
+    "errors": {
+      "email": "Invalid email",
+      "name": "Name must be at least 2 characters",
+      "phone": "Phone number must be at least 8 characters",
+      "message": "Message must be at least 10 characters"
+    },
+    "sending": "sending...",
+    "sent": "message sent",
+    "error": "something went wrong",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  }
 }
