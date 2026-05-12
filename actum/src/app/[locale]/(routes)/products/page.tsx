@@ -1,37 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { supabase } from "@/lib/supabaseClient";
-import { Fragment } from "react";
-
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  pics: string[];
-  editorial_text: string | null;
-  sort_by: number;
-};
+import { getAllProducts } from "@/lib/products";
+import { getAspectRatio } from "@/lib/utils";
 
 export default async function ProductsPage() {
-  const { data: products, error } = await supabase
-    .from("products")
-    .select("id, name, description, pics, editorial_text, sort_by")
-    .order("sort_by");
-
-  if (error) {
-    console.error(error);
-    return <p>Kunne ikke hente produkter.</p>;
-  }
-
-  const aspectRatios = [
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-    "aspect-square",
-    "aspect-[2/3]",
-    "aspect-[16/9]",
-  ];
-
-  const getAspectRatio = (id: number) => aspectRatios[id % aspectRatios.length];
+  const products = await getAllProducts();
 
   return (
     <main className="full-bleed grid grid-cols-subgrid">
