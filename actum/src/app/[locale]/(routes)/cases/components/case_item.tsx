@@ -9,22 +9,12 @@ import { Case } from "@/lib/types";
 type Props = {
   caseItem: Case;
 };
-
 export default function CaseItem({ caseItem }: Props) {
-  // useRef bruges til at måle scroll-progress relativt til dette element
   const ref = useRef(null);
-
-  // useScroll måler hvor langt man har scrollet relativt til elementet
-  // start end = når elementets top rammer viewport bund (elementet er lige ved at komme ind)
-  // center center = når elementets midte rammer viewport midte
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "center center"],
   });
-
-  // useTransform konverterer scroll-progress (0 til 1) til en clip-path værdi
-  // Ved 0% scroll er billedet skjult — clip-path skjuler alt fra midten
-  // Ved 100% scroll er billedet fuldt synligt — clip-path er væk
   const clipPath = useTransform(
     scrollYProgress,
     [0, 1],
@@ -33,26 +23,28 @@ export default function CaseItem({ caseItem }: Props) {
 
   return (
     <>
-      <div
+      {/* Billede */}
+      <motion.div
         id={`case-${caseItem.order}`}
-        className="col-span-2 md:col-span-4 flex flex-col items-center"
+        ref={ref}
+        style={{ clipPath }}
+        className="col-span-2 md:col-span-3"
       >
         {caseItem.image_url && (
-          // motion.div håndterer clip-path animationen
-          // ref er sat her så useScroll kan måle scroll-progress relativt til billedet
-          <motion.div ref={ref} style={{ clipPath }} className="w-full">
-            <Image
-              src={caseItem.image_url.trim()}
-              alt={caseItem.title}
-              width={800}
-              height={900}
-              className="w-full h-auto"
-            />
-          </motion.div>
+          <Image
+            src={caseItem.image_url.trim()}
+            alt={caseItem.title}
+            width={800}
+            height={900}
+            className="w-full h-auto"
+          />
         )}
-        {/* Beskrivelse vises under billedet på alle skærmstørrelser */}
-        <p>{caseItem.description}</p>
-      </div>
+      </motion.div>
+
+      {/* Tekst — under billede på mobil, kolonne 5 på desktop */}
+      <p className="col-span-2 md:col-span-1 items-center flex">
+        {caseItem.description}
+      </p>
     </>
   );
 }
