@@ -23,7 +23,7 @@ export default function FaqSection({ faqs }: Props) {
         <div className="flex flex-col">
           {faqs.map((faq) => (
             <div key={faq.id} className="border-t border-foreground last:border-b">
-              <button onClick={() => setOpen(open === faq.id ? null : faq.id)} className="w-full flex justify-between items-center py-4 text-left font-ocr text-base tracking-widest cursor-pointer">
+              <button onClick={() => setOpen(open === faq.id ? null : faq.id)} className="w-full flex justify-between items-center py-4 text-left font-ocr tracking-widest cursor-pointer">
                 {faq.question[locale]}
                 <span>{open === faq.id ? "−" : "+"}</span>
               </button>
