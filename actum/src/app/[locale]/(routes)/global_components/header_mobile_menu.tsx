@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import LanguageSwitch from "./language_switch";
+import NavLink from "./nav_link";
 
 type Props = {
   links: { href: string; label: string }[];
@@ -13,7 +14,7 @@ export default function MobileMenu({ links }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-<div className="col-[4/content-end] flex justify-end items-center lg:hidden">
+    <div className="col-[4/content-end] flex justify-end items-center lg:hidden">
       <button onClick={() => setOpen(true)} className="font-ocr text-sm tracking-wide">
         menu
       </button>
@@ -36,13 +37,11 @@ export default function MobileMenu({ links }: Props) {
               </button>
             </div>
 
-            <div className="flex flex-col gap-4 font-bold text-base leading-7 tracking-wide">
+            <ul className="flex flex-col gap-4 font-bold text-base leading-7 tracking-wide">
               {links.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
-                  {link.label}
-                </Link>
+                <NavLink key={link.href} href={link.href} label={link.label} onClick={() => setOpen(false)} />
               ))}
-            </div>
+            </ul>
 
             <LanguageSwitch className="flex gap-1 font-bold text-base" />
           </motion.nav>

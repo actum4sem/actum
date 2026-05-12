@@ -1,23 +1,19 @@
 import { supabase } from "@/lib/supabaseClient";
-import FullBleedTest from "./fullbleed_test";
 import Hero from "./components_index/hero_section";
 import AboutSection from "./components_index/about_section";
-import FaqSection from "./components_index/faq_section";
 import VideoSection from "./components_index/video_section";
+import FaqSectionWrapper from "./components_index/faq_section_wrapper";
 
 export default function Home() {
-  // Hent data fra din nye tabel
-  // const { data, error } = await supabase.from("personel").select("*");
-
-  // if (error) return <div>Fejl: {error.message}</div>;
+  
 
   return (
     <main className="full-bleed grid grid-cols-subgrid">
         <Hero />
-      <FullBleedTest />
+  
       <VideoSection />
         <AboutSection />
-        <FaqSection />
+        <FaqSectionWrapper />
     </main>
   );
 }

@@ -25,7 +25,7 @@ export default async function AboutSection() {
           <br />
           {t("by")}
         </p>
-        <CTAButtonDiscrete href="/about" label={t("link")} />
+        <CTAButtonDiscrete href="/about" label={t("link")}/>
       </div>
     </div>
   </div>

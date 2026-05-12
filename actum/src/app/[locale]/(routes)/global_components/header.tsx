@@ -40,6 +40,7 @@ import HeaderScroll from "./header_scroll";
 import LanguageSwitch from "./language_switch";
 import MobileMenu from "./header_mobile_menu";
 import Link from "next/link";
+import NavLink from "./nav_link";
 
 export default async function Header() {
   const t = await getTranslations("nav");
@@ -50,7 +51,7 @@ export default async function Header() {
   actum
 </Link>
 
-<nav className="col-[4/5] hidden lg:flex flex-col items-end font-bold text-base leading-7 tracking-wide">
+{/* <nav className="col-[4/5] hidden lg:flex flex-col items-end font-bold text-base leading-7 tracking-wide">
   <Link href="/">{t("forside")}</Link>
   <Link href="/products">{t("produkter")}</Link>
   <Link href="/cases">{t("cases")}</Link>
@@ -60,7 +61,23 @@ export default async function Header() {
   <Link href="/faq">{t("faq")}</Link>
   <Link href="/about">{t("om")}</Link>
   <Link href="/contact">{t("kontakt")}</Link>
-</nav>
+</nav> */}
+
+      <nav className="col-[4/5] hidden lg:flex flex-col items-end font-bold text-base leading-7 tracking-wide">
+        <ul className="flex flex-col items-end">
+          <NavLink href="/" label={t("forside")} />
+          <NavLink href="/products" label={t("produkter")} />
+          <NavLink href="/cases" label={t("cases")} />
+        </ul>
+      </nav>
+
+      <nav className="col-[5/6] hidden lg:flex flex-col items-end font-bold text-base leading-7 tracking-wide">
+        <ul className="flex flex-col items-end">
+          <NavLink href="/faq" label={t("faq")} />
+          <NavLink href="/about" label={t("om")} />
+          <NavLink href="/contact" label={t("kontakt")} />
+        </ul>
+      </nav>
 
 <LanguageSwitch className="col-[6/content-end] hidden lg:flex justify-end gap-1 font-bold text-base leading-7 tracking-wide" />
 
