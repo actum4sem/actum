@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import CtaButton from "@/app/[locale]/(routes)/global_components/cta_button";
-type Material = {
-  name: string;
-  price_per_unit: number;
-  category: string;
-  id: string;
-};
-
+import { Material } from "@/lib/types";
 type Props = {
   materials: Material[];
 };
@@ -34,7 +28,7 @@ export default function PriceCalculator({ materials }: Props) {
                 className="w-full border border-black p-2 font-mono text-sm uppercase tracking-widest appearance-none bg-white cursor-pointer"
                 onChange={(e) => {
                   const material = materials.find(
-                    (m) => m.id === e.target.value,
+                    (m) => m.id === Number(e.target.value),
                   );
                   if (material)
                     setSelected((prev) => ({ ...prev, [category]: material }));
