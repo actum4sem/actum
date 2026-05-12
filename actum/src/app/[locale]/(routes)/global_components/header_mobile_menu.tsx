@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -8,9 +9,10 @@ import NavLink from "./nav_link";
 
 type Props = {
   links: { href: string; label: string }[];
+  locale: string;
 };
 
-export default function MobileMenu({ links }: Props) {
+export default function MobileMenu({ links, locale }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -39,7 +41,7 @@ export default function MobileMenu({ links }: Props) {
 
             <ul className="flex flex-col gap-4 font-bold text-base leading-7 tracking-wide">
               {links.map((link) => (
-                <NavLink key={link.href} href={link.href} label={link.label} onClick={() => setOpen(false)} />
+                <NavLink key={link.href} href={link.href} label={link.label} locale={locale} onClick={() => setOpen(false)} />
               ))}
             </ul>
 
