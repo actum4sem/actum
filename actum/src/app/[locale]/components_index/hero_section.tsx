@@ -17,11 +17,11 @@ export default async function Hero() {
       </HeroText>
 
       <HeroText delay={3} className="content row-[4/5] self-start">
-        <h2 className="font-sans! text-[clamp(2.5rem,5vw,4.6875rem)]! leading-none">{t("titel")}</h2>
+        <h2 className="font-sans! text-[clamp(2.5rem,5vw,4.6875rem)]! leading-none">{t("title")}</h2>
       </HeroText>
 
       <HeroText delay={3.2} className="col-[content-start/content-end] md:col-[content-start/5] row-[5/6] py-8">
-        <p className="text-base indent-20">{t("tekst")}</p>
+        <p className="text-base indent-20">{t("text")}</p>
       </HeroText>
 
       <HeroDots />

@@ -1,20 +1,35 @@
 export type Product = {
   id: number;
-  name: string;
-  description: string;
-  pics: string[];
-  editorial_text?: string | null;
-  sort_by?: number;
-  category?: string;
+  sort_by: number;
+  name: {
+    da: string;
+    en: string;
+  };
+  description: {
+    da: string;
+    en: string;
+  };
+  category: {
+    da: string;
+    en: string;
+  };
+  pics: string[] | null;
+  editorial_text: string | null;
+  is_popular: boolean;
+  created_at: string;
 };
-
 export type Material = {
-  id: number;
-  name: string;
+  id: string;
   price_per_unit: number;
-  category: string;
+  category: {
+    da: string;
+    en: string;
+  };
+  name: {
+    da: string;
+    en: string;
+  };
 };
-
 export type Case = {
   id: number;
   title: string;
@@ -23,12 +38,17 @@ export type Case = {
   orientation: string;
   order: number;
 };
-
 export type TeamMember = {
   id: string;
   name: string;
-  title: string;
-  description: string;
+  title: {
+    da: string;
+    en: string;
+  };
+  description: {
+    da: string;
+    en: string;
+  };
   image_url: string;
   display_order: number;
 };
