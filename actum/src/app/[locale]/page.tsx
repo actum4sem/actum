@@ -11,10 +11,10 @@ export default async function Home() {
   return (
     <main className="full-bleed grid grid-cols-subgrid">
       <Hero />
-      {/* <ProductGrid
+      <ProductGrid
         products={popularProducts ?? []}
         title="Populære produkter"
-      /> */}
+      />
 
       <VideoSection />
       <AboutSection />
