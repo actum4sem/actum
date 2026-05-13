@@ -4,23 +4,25 @@ import { useState } from "react";
 import { useLocale } from "next-intl";
 import CtaButton from "@/app/[locale]/(routes)/global_components/cta_button";
 import { Material } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 type Props = {
   materials: Material[];
 };
 
 export default function PriceCalculator({ materials }: Props) {
+  const t = useTranslations("singleproduct");
+
   const [selected, setSelected] = useState<Record<string, Material>>({});
-  const [quantity, setQuantity] = useState(1);
   const locale = useLocale() as "da" | "en";
 
   // Bruger da-værdien som stabil intern nøgle til gruppering
   const categoryKeys = [...new Set(materials.map((m) => m.category.da))];
 
-  const totalPrice =
-    Object.values(selected).reduce((sum, m) => sum + m.price_per_unit, 0) *
-    quantity;
-
+  const totalPrice = Object.values(selected).reduce(
+    (sum, m) => sum + m.price_per_unit,
+    0,
+  );
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
@@ -68,10 +70,8 @@ export default function PriceCalculator({ materials }: Props) {
         {/* Højre – pris og knap */}
         <div className="flex flex-col gap-2 justify-end">
           <h4>{totalPrice.toFixed(2)} DKK</h4>
-          <span className="text-gray-400 text-xs font-ocr">
-            vejledende pris
-          </span>
-          <CtaButton label="Kontakt os" href="/contact" />
+          <span className="text-gray-400 text-xs font-ocr">{t("price")}</span>
+          <CtaButton label={t("link")} href="/contact" />
         </div>
       </div>
     </div>

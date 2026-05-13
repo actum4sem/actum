@@ -1,0 +1,9 @@
+{
+  "singleproduct": {
+    "title": "single product",
+    "link": "kontakt os",
+    "price": "Vejledende pris",
+    "breadcrum": "produkter",
+    "relatedproducts": "relaterede produkter"
+  }
+}

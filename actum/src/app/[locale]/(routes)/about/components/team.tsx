@@ -1,4 +1,5 @@
 import { getTeamMembers } from "@/lib/team_members";
+import { getLocale } from "next-intl/server";
 import Image from "next/image";
 
 function MemberText({
@@ -35,20 +36,17 @@ function MemberImage({ src, alt }: { src: string; alt: string }) {
 
 export default async function TeamSection() {
   const members = await getTeamMembers();
+  const locale = (await getLocale()) as "da" | "en";
 
   return (
-    //overvej gap el flere kolonner
-    <section
-      className="content grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8
-"
-    >
+    <section className="content grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
       {members.map((member) => (
         <article key={member.id} className="flex flex-col">
           <MemberImage src={member.image_url} alt={member.name} />
           <MemberText
             name={member.name}
-            title={member.title}
-            description={member.description}
+            title={member.title[locale]}
+            description={member.description[locale]}
           />
         </article>
       ))}
