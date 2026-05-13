@@ -1,3 +1,5 @@
- { "faq": {
-    "titel": "faq"
-  }}
+{
+  "faq": {
+    "title": "faq"
+  }
+}

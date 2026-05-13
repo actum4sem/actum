@@ -1,3 +1,5 @@
-  {"products": {
-    "titel": "produkter"
-  }}
+{
+  "products": {
+    "title": "produkter"
+  }
+}
