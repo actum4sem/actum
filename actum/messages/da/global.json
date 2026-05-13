@@ -1,31 +1,31 @@
 {
   "nav": {
-    "forside": "forside",
-    "produkter": "produkter",
+    "home": "forside",
+    "products": "produkter",
     "cases": "projekter",
     "faq": "faq",
-    "om": "om os",
-    "kontakt": "kontakt",
-      "menu": "menu",
-    "luk": "luk"
+    "about": "om os",
+    "contact": "kontakt",
+     "menu": "menu",
+    "close": "luk"
   },
  
   "footer": {
-    "kontakt": "Kontakt",
-    "navn": "Actum Design & Tryk",
-    "cvr": "CVR: 44103362",
-    "adresse": "Vesterbrogade 129",
-    "by": "1620 København V",
-    "telefon": "+45 33 23 12 34",
+    "contact": "Kontakt",
+    "name": "Actum Design & Tryk",
+    "vat": "CVR: 44103362",
+    "address": "Vesterbrogade 129",
+    "city": "1620 København V",
+    "phone": "+45 33 23 12 34",
     "email": "butik@actum.dk",
-    "aabningstider": "Åbningstider",
-    "manfre": "Man - Fre: 12.00 - 17.00",
-    "onsdag": "Onsdag: Lukket",
-    "lordag": "Lørdag: Lukket",
-    "sondag": "Søndag: Lukket",
+    "openingHours": "Åbningstider",
+    "monFri": "Man - Fre: 12.00 - 17.00",
+    "wednesday": "Onsdag: Lukket",
+    "saturday": "Lørdag: Lukket",
+    "sunday": "Søndag: Lukket",
     "logo": "actum",
-    "tiltoppen": "Til toppen",
+    "toTop": "Til toppen",
     "copyright": "© 2026 Actum Kopi & Tryk.",
-    "kontaktCTA": "Kontakt os"
+    "contactCTA": "Kontakt os"
   }
 }

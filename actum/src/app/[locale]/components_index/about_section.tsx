@@ -17,13 +17,13 @@ export default async function AboutSection() {
         </div>
 
         <div className="flex flex-col justify-between gap-y-16">
-          <p className="indent-20">{t("tekst")}</p>
+          <p className="indent-20">{t("text")}</p>
 
           <div className="flex justify-between items-end">
             <p className="font-ocr">
-              {t("adresse")}
+              {t("address")}
               <br />
-              {t("by")}
+              {t("city")}
             </p>
             <CTAButtonDiscrete href="/about" label={t("link")} />
           </div>

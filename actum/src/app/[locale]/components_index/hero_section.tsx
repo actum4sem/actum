@@ -25,11 +25,11 @@ export default function Hero() {
       <HeroLogo />
       {/* Titel */}
       <div className="content row-start-4">
-        <h1 className="font-sans text-[8vw] leading-none tracking-wide md:text-[5vw]">{t("titel")}</h1>
+        <h1 className="font-sans text-[8vw] leading-none tracking-wide md:text-[5vw]">{t("title")}</h1>
       </div>
       {/* Tekst */}
       <div className="col-[content-start/content-end] row-start-5 pt-5 md:col-[content-start/4]">
-        <p className="text-base indent-20">{t("tekst")}</p>
+        <p className="text-base indent-20">{t("text")}</p>
       </div>
       {/* Prikker */}
       <div className="col-[4/full-end] row-[2/6] self-start justify-self-end z-10">

@@ -12,7 +12,7 @@ export default async function FaqPage() {
 
   return (
    <main className="full-bleed grid grid-cols-subgrid">
-      <GlobalH1Section title={t("titel")} />
+      <GlobalH1Section title={t("title")} />
       <FaqPageSection faqs={faqs} />
       <FaqGallery images={images} />
     </main>

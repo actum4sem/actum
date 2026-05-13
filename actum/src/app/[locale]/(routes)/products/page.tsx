@@ -12,7 +12,7 @@ export default async function ProductsPage() {
   return (
     <main className="full-bleed grid grid-cols-subgrid">
       <section className="content">
-        <GlobalH1Section title={t("titel")} />
+        <GlobalH1Section title={t("title")} />
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
           {products.map((product) => (
             <Link href={`/products/${product.id}`} key={product.id}>

@@ -35,7 +35,7 @@ export default async function CasesPage() {
   return (
     <main className="full-bleed grid grid-cols-subgrid">
       <section className="content grid grid-cols-subgrid">
-        <GlobalH1Section title={t("titel")} />
+        <GlobalH1Section title={t("title")} />
         {/* Navigation — skjult på mobil */}
         <CasesNav cases={cases} />
 
