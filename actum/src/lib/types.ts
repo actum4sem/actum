@@ -7,14 +7,18 @@ export type Product = {
   sort_by?: number;
   category?: string;
 };
-
 export type Material = {
-  id: number;
-  name: string;
+  id: string;
   price_per_unit: number;
-  category: string;
+  category: {
+    da: string;
+    en: string;
+  };
+  name: {
+    da: string;
+    en: string;
+  };
 };
-
 export type Case = {
   id: number;
   title: string;
