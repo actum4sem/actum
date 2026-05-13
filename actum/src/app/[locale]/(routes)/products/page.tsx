@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getAllProducts } from "@/lib/products";
-import { getAspectRatio } from "@/lib/utils";
 import { getTranslations } from "next-intl/server";
 import { getLocale } from "next-intl/server";
 import GlobalH1Section from "../global_components/global-h1-section";
+import ProductImage from "../global_components/product_image";
 
 export default async function ProductsPage() {
   const products = await getAllProducts();
@@ -21,20 +20,7 @@ export default async function ProductsPage() {
               <li className="flex flex-col gap-4">
                 <div>[ {product.sort_by} ]</div>
                 <p>{product.name[locale]}</p>
-                {product.pics?.[0] && product.pics[0] !== "null" ? (
-                  <div
-                    className={`relative w-full ${getAspectRatio(product.id)} overflow-hidden`}
-                  >
-                    <Image
-                      src={product.pics[0]}
-                      alt={product.name[locale]}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ) : product.editorial_text ? (
-                  <p>{product.editorial_text}</p>
-                ) : null}
+                <ProductImage product={product} locale={locale} />
               </li>
             </Link>
           ))}
