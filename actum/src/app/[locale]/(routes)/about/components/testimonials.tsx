@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 export default async function AboutSection() {
-  const t = await getTranslations("about_section");
+  const t = await getTranslations("testimonials");
 
   return (
     <section className="content ">
@@ -20,9 +20,7 @@ export default async function AboutSection() {
         </div>
 
         <div className="flex flex-col justify-between gap-y-16">
-          <p className="indent-20">{t("tekst")}</p>
-          <p className="indent-20">{t("tekst")}</p>
-          <p className="indent-20">{t("tekst")}</p>
+          <p className="indent-20">{t("text")}</p>
           <p className="font-ocr">- Lise og Louise</p>
         </div>
       </div>

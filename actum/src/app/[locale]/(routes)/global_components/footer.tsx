@@ -21,7 +21,11 @@ export default function Footer() {
           <p>{t("phone")}</p>
           <p>{t("email")}</p>
           <br />
-          <CTAButtonDiscrete href="/contact" label={t("contactCTA")} className="text-white" />
+          <CTAButtonDiscrete
+            href="/contact"
+            label={t("contactCTA")}
+            className="text-white"
+          />
         </div>
       </div>
 
@@ -42,7 +46,10 @@ export default function Footer() {
       <div className="col-[3/content-end] row-start-1 flex flex-col items-end md:gap-0 md:justify-between md:col-[4/content-end] lg:col-[6/content-end] md:row-start-1">
         <p className="font-ocr text-2xl tracking-widest">{t("logo")}</p>
         <br />
-        <a href="#top" className="font-medium hover:opacity-60 transition-opacity duration-200">
+        <a
+          href="#top"
+          className="font-medium hover:opacity-60 transition-opacity duration-200"
+        >
           {t("toTop")}
         </a>
       </div>

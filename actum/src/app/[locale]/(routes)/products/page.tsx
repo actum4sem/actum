@@ -20,8 +20,15 @@ export default async function ProductsPage() {
                 <div>[ {product.sort_by} ]</div>
                 <p>{product.name}</p>
                 {product.pics?.[0] && product.pics[0] !== "null" ? (
-                  <div className={`relative w-full ${getAspectRatio(product.id)} overflow-hidden`}>
-                    <Image src={product.pics[0]} alt={product.name} fill className="object-cover" />
+                  <div
+                    className={`relative w-full ${getAspectRatio(product.id)} overflow-hidden`}
+                  >
+                    <Image
+                      src={product.pics[0]}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 ) : product.editorial_text ? (
                   <p>{product.editorial_text}</p>

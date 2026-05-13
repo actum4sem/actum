@@ -6,10 +6,10 @@
     "faq": "faq",
     "about": "about",
     "contact": "contact",
-     "menu": "menu",
+    "menu": "menu",
     "close": "close"
   },
-   "footer": {
+  "footer": {
     "contact": "Contact",
     "name": "Actum Design & Print",
     "vat": "CVR: 44103362",

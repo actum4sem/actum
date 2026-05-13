@@ -1,19 +1,21 @@
-
-import { getTranslations } from "next-intl/server"
-import { getLocale } from "next-intl/server"
-import HeaderScroll from "./header_scroll"
-import LanguageSwitch from "./language_switch"
-import MobileMenu from "./header_mobile_menu"
-import Link from "next/link"
-import NavLink from "./nav_link"
+import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
+import HeaderScroll from "./header_scroll";
+import LanguageSwitch from "./language_switch";
+import MobileMenu from "./header_mobile_menu";
+import Link from "next/link";
+import NavLink from "./nav_link";
 
 export default async function Header() {
-  const t = await getTranslations("nav")
-  const locale = await getLocale()
+  const t = await getTranslations("nav");
+  const locale = await getLocale();
 
   return (
     <HeaderScroll>
-      <Link href="/" className="font-ocr text-2xl tracking-[0.04em] leading-none col-[content-start/2] md:col-[content-start/3]">
+      <Link
+        href="/"
+        className="font-ocr text-2xl tracking-[0.04em] leading-none col-[content-start/2] md:col-[content-start/3]"
+      >
         actum
       </Link>
 
@@ -47,5 +49,5 @@ export default async function Header() {
         ]}
       />
     </HeaderScroll>
-  )
+  );
 }

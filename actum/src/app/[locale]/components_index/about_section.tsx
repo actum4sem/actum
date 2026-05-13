@@ -12,7 +12,12 @@ export default async function AboutSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 py-16 gap-y-16">
         <div className="flex items-center justify-center">
           <div className="relative w-1/3 aspect-3/4">
-            <Image src="/assets/index/about_dummy.jpg" alt="" fill className="object-cover" />
+            <Image
+              src="/assets/index/about_dummy.jpg"
+              alt=""
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
 
