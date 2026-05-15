@@ -11,11 +11,11 @@ export default function ImageGallery({ pics }: Props) {
 
   return (
     <div className="flex gap-2 flex-row">
-      <figure>
+      <figure className="relative flex-1 max-h-[80vh] aspect-3/4 overflow-hidden">
         <Image
           src={activeImage}
-          width={800}
-          height={600}
+          fill
+          className="object-cover"
           alt="Aktivt billede"
         />
       </figure>
