@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import FaqContent from "./components/faq_content";
 import { getFaqs } from "@/lib/faq";
 import { getFaqImages } from "@/lib/gallery";
 import FaqPageSection from "./components/faq_page_section";
@@ -12,8 +14,9 @@ export default async function FaqPage() {
   return (
     <main className="full-bleed grid grid-cols-subgrid">
       <GlobalH1Section title={t("title")} />
-      <FaqPageSection faqs={faqs} />
-      <FaqGallery images={images} />
+      <Suspense fallback={<p>Loading FAQ...</p>}>
+        <FaqContent />
+      </Suspense>
     </main>
   );
 }
