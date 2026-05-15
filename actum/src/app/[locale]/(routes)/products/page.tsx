@@ -13,26 +13,9 @@ export default async function ProductsPage() {
 
   return (
     <main className="full-bleed grid grid-cols-subgrid">
-      <section className="content">
-        <GlobalH1Section title={t("title")} />
-        <Suspense fallback={<p>Loading products...</p>}>
-          <ProductsContent />
-        </Suspense>
-        
-        
-        <GlobalH1Section title={t("title")} />
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
-          {products.map((product) => (
-            <Link href={`/products/${product.id}`} key={product.id}>
-              <li className="flex flex-col gap-4">
-                <div>[ {product.sort_by} ]</div>
-                <p>{product.name[locale]}</p>
-                <ProductImage product={product} locale={locale} />
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </section>
+      <Suspense fallback={<p>Loading products...</p>}>
+        <ProductsContent />
+      </Suspense>
     </main>
   );
 }
