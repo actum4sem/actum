@@ -1,40 +1,30 @@
 import { useTranslations } from "next-intl";
-import HeroLogo from "./hero_logo";
-import Image from "next/image";
+import HeroGallery from "./hero_gallery";
+import HeroDots from "./hero_dots";
+import HeroText from "./hero_text";
+import { getIndexImages } from "@/lib/index_gallery";
 
-export default function Hero() {
+export default async function Hero() {
   const t = useTranslations("hero");
+  const images = await getIndexImages();
 
   return (
-    <section className="full-bleed grid grid-cols-subgrid grid-rows-[auto_auto_auto_auto]  overflow-hidden ">
-      {/* Billeder */}
-      <div className="col-[full-start/content-end] row-[1/3] grid grid-cols-3 gap-6">
-        <div className="relative aspect-3/4">
-          <Image src="/assets/index/hero1.jpg" alt="" fill priority className="object-cover" />
-        </div>
+    <section className="full-bleed grid grid-cols-subgrid grid-rows-[auto_auto_auto_auto_auto]">
+      <HeroGallery images={images} />
 
-        <div className="relative aspect-3/4">
-          <Image src="/assets/index/hero2.jpg" alt="" fill priority className="object-cover" />
-        </div>
+      <HeroText delay={2} className="content row-[2/4] self-end z-10">
+        <h1 className="font-ocr text-[clamp(5rem,22vw,16.625rem)]! leading-none tracking-[0.04em]">actum</h1>
+      </HeroText>
 
-        <div className="relative aspect-3/4">
-          <Image src="/assets/index/hero3.jpg" alt="" fill priority className="object-cover" />
-        </div>
-      </div>
-      {/* logo*/}
-      <HeroLogo />
-      {/* Titel */}
-      <div className="content row-start-4">
-        <h1 className="font-sans text-[8vw] leading-none tracking-wide md:text-[5vw]">{t("titel")}</h1>
-      </div>
-      {/* Tekst */}
-      <div className="col-[content-start/content-end] row-start-5 pt-5 md:col-[content-start/4]">
-        <p className="text-base indent-20">{t("tekst")}</p>
-      </div>
-      {/* Prikker */}
-      <div className="col-[4/full-end] row-[2/6] self-start justify-self-end z-10">
-        <Image src="/assets/global/dots_big_group.svg" alt="" width={520} height={720} className="w-[32vw] max-w-130" />
-      </div>
+      <HeroText delay={3} className="content row-[4/5] self-start">
+        <h2 className="font-sans! text-[clamp(2.5rem,5vw,4.6875rem)]! leading-none">{t("title")}</h2>
+      </HeroText>
+
+      <HeroText delay={3.2} className="col-[content-start/content-end] md:col-[content-start/5] row-[5/6] py-8">
+        <p className="text-base indent-20">{t("text")}</p>
+      </HeroText>
+
+      <HeroDots />
     </section>
   );
 }
