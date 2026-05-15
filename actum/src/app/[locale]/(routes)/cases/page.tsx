@@ -32,12 +32,10 @@ export default async function CasesPage() {
 
     return (
         <main className="full-bleed grid grid-cols-subgrid">
-            <section className="content grid grid-cols-subgrid">
-                <GlobalH1Section title={t("titel")} />
-                <Suspense fallback={<p>Loading cases...</p>}>
-                    <CasesContent />
-                </Suspense>
-            </section>
+            <GlobalH1Section title={t("title")} />
+            <Suspense fallback={<p>Loading cases...</p>}>
+                <CasesContent />
+            </Suspense>
         </main>
     );
 }
