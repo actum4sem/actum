@@ -49,11 +49,10 @@ export default function FaqSection({ faqs }: Props) {
               </AnimatePresence>
             </div>
           ))}
-
-          <div className="flex justify-end pt-8">
-            <CTAButtonDiscrete href="/faq" label={t("link_faq")} />
-          </div>
         </div>
+      </div>
+      <div className="flex justify-end pt-8">
+        <CTAButtonDiscrete href="/faq" label={t("link_faq")} />
       </div>
     </section>
   );
