@@ -1,5 +1,3 @@
-import { supabase } from "@/lib/supabaseClient";
-
 export type ContactFormData = {
   email: string;
   name: string;
@@ -8,7 +6,13 @@ export type ContactFormData = {
 };
 
 export async function submitContactForm(data: ContactFormData): Promise<void> {
-  const { error } = await supabase.from("contact_submissions").insert([data]);
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
-  if (error) throw error;
+  if (!response.ok) {
+    throw new Error("Noget gik galt");
+  }
 }

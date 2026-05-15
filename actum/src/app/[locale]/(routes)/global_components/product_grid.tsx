@@ -1,5 +1,6 @@
 import { Product } from "@/lib/types";
 import { getLocale } from "next-intl/server";
+import { Link } from "@i18n/navigation";
 import ProductImage from "./product_image";
 
 export default async function ProductGrid({
@@ -24,13 +25,21 @@ export default async function ProductGrid({
         }}
       >
         {products.map((product) => (
-          <ProductImage key={product.id} product={product} locale={locale} />
+          <Link href={`/products/${product.id}`} key={product.id}>
+            <li
+              className="flex flex-col gap-2 shrink-0 w-70"
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <div>[ {product.sort_by} ]</div>
+              <p>{product.name[locale]}</p>
+              <ProductImage product={product} locale={locale} />
+            </li>
+          </Link>
         ))}
       </ul>
     </section>
   );
 }
-
 // import { Link } from "@i18n/navigation";
 // import Image from "next/image";
 // import { Product } from "@/lib/types";

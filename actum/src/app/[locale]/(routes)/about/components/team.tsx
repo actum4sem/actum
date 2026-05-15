@@ -39,7 +39,7 @@ export default async function TeamSection() {
   const locale = (await getLocale()) as "da" | "en";
 
   return (
-    <section className="content grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
+    <section className="content grid grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-8">
       {members.map((member) => (
         <article key={member.id} className="flex flex-col">
           <MemberImage src={member.image_url} alt={member.name} />
