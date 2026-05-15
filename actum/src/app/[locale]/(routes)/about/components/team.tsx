@@ -12,7 +12,7 @@ function MemberText({
   description: string;
 }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-2">
       <span className="font-ocr text-[--grey]">{name}</span>
       <h3>{title}</h3>
       <p>{description}</p>
