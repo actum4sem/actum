@@ -38,26 +38,31 @@ export default function PriceCalculator({ materials }: Props) {
     <div className="flex flex-col justify-between h-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
         <div className="flex flex-col gap-4">
-          {/* her looper vi igennem alle kategorier, og finder den danske label
-          for hver kategori ved at finde det første materiale i materials
-          arrayet, som har den kategori, og så hente category[locale] for at få
-          det på det rigtige sprog. Så laver vi en dropdown for hver kategori,
-          hvor options er de materialer der hører til den kategori. Når brugeren
-          vælger et materiale, finder vi det valgte materiale i materials
-          arrayet ud fra dets id, og gemmer det i selected state under den
-          kategori. Vi har også tilføjet et custom pil-ikon ved siden af
-          dropdownen for at erstatte browserens standard dropdown-pil. */}
+          {/* // categoryKeys er arrayet af unikke kategorier vi lavede tidligere –
+          fx ["papir", "format"]. Vi looper igennem dem én ad gangen, og
+          categoryKey er den aktuelle kategori vi arbejder med.  For hver
+          kategori skal vi finde dens navn på det sprog brugeren har valgt. 
+          Vi bruger materials.find() til at lede efter det første materiale der
+          tilhører den aktuelle kategori, og henter så category[locale] på
+          det fundne materiale for at få navnet på det rigtige sprog. // ?.
+          sikrer at vi ikke crasher hvis find() ikke finder noget – i stedet
+          returnerer den undefined. */}
           {categoryKeys.map((categoryKey) => {
             const categoryLabel = materials.find(
               (material) => material.category.da === categoryKey,
             )?.category[locale];
-
             return (
               <div key={categoryKey} className="relative min-w-64">
                 <select
                   className="w-full border border-black p-2 font-mono text-sm tracking-widest appearance-none bg-white cursor-pointer"
                   onChange={(e) => {
-                    // Finder det valgte materiale ud fra dets id og gemmer det i selected
+                    // onChange kører hver gang brugeren vælger en ny option i dropdown.
+                    // e.target.value er id'et på det materiale brugeren valgte.
+                    // Vi bruger materials.find() til at finde det fulde materiale-objekt der matcher id'et,
+                    // så vi har adgang til alle materialets data – ikke kun id'et.
+                    // Hvis find() finder et materiale, gemmer vi det i selected med setSelected.
+                    // ...prev kopierer alle tidligere valg så vi ikke overskriver andre kategoriers valg –
+                    // kun den aktuelle kategori bliver opdateret med det nye materiale.
                     const material = materials.find(
                       (material) => material.id === e.target.value,
                     );
@@ -68,10 +73,12 @@ export default function PriceCalculator({ materials }: Props) {
                       }));
                   }}
                 >
-                  {/* Standardvalg viser kategoriens navn */}
+                  {/* Standardvalg viser kategoriens navn på det aktuelle sprog – bruges som placeholder før brugeren vælger */}
                   <option>{categoryLabel}</option>
 
-                  {/* Filtrerer materialer så kun dem i den aktuelle kategori vises */}
+                  {/* Filtrerer materials-arrayet så vi kun får de materialer der tilhører den aktuelle kategori,
+                  og mapper dem derefter til option-elementer med materialets id som value og navn på det aktuelle sprog som label.
+                  value={material.id} bruges til at finde det rigtige materiale i onChange ovenfor via e.target.value */}
                   {materials
                     .filter((material) => material.category.da === categoryKey)
                     .map((material) => (
@@ -81,7 +88,8 @@ export default function PriceCalculator({ materials }: Props) {
                     ))}
                 </select>
 
-                {/* Tilpasset pil-ikon der erstatter browserens standard dropdown-pil */}
+                {/* Tilpasset pil-ikon der erstatter browserens standard dropdown-pil.
+                pointer-events-none sikrer at ikonet ikke blokerer for klik på selve dropdown-elementet */}
                 <div className="pointer-events-none absolute right-4 inset-y-0 flex items-center">
                   <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
                     <path d="M1 1L7 7L13 1" stroke="black" strokeWidth="1" />
@@ -92,7 +100,8 @@ export default function PriceCalculator({ materials }: Props) {
           })}
         </div>
 
-        {/* Højre kolonne – viser den samlede pris og en knap til kontaktsiden */}
+        {/* Højre kolonne – viser den samlede pris.
+        toFixed(2) sikrer at prisen altid vises med to decimaler –  */}
         <div className="flex flex-col gap-2 justify-end">
           <h4>{totalPrice.toFixed(2)} DKK</h4>
           <span className="text-gray-400 text-xs font-ocr">{t("price")}</span>
