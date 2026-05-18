@@ -12,8 +12,7 @@ export default function AboutPage() {
       <Suspense fallback={<p>Loading team...</p>}>
         <Team />
       </Suspense>
-              <ContactSection />
-
+      <ContactSection />
     </main>
   );
 }
