@@ -6,11 +6,15 @@ import { useLocale, useTranslations } from "next-intl";
 import CTAButtonDiscrete from "@/app/[locale]/(routes)/global_components/cta_button_discrete";
 import { Faq } from "@/lib/faq";
 
+// Props til FAQ-sektionen, modtager en liste af FAQs
 type Props = {
   faqs: Faq[];
 };
 
+// "use client" er nødvendigt da komponenten bruger useState til at styre åben/lukket tilstand
+// Modtager faqs som props fra FaqSectionWrapper der fetcher data på serversiden
 export default function FaqSection({ faqs }: Props) {
+  // open gemmer id'et på den åbne FAQ — null betyder ingen er åben
   const [open, setOpen] = useState<number | null>(null);
   const locale = useLocale() as "da" | "en";
   const t = useTranslations("faq_section");
@@ -26,6 +30,7 @@ export default function FaqSection({ faqs }: Props) {
               key={faq.id}
               className="border-t border-foreground last:border-b"
             >
+              {/* Klik på spørgsmål åbner eller lukker det — samme id lukker igen */}
               <button
                 onClick={() => setOpen(open === faq.id ? null : faq.id)}
                 className="w-full flex justify-between items-center py-4 text-left font-ocr tracking-widest cursor-pointer"
@@ -34,8 +39,10 @@ export default function FaqSection({ faqs }: Props) {
                 <span>{open === faq.id ? "−" : "+"}</span>
               </button>
 
+              {/* AnimatePresence sikrer at exit-animationen kører når svaret lukkes */}
               <AnimatePresence>
                 {open === faq.id && (
+                  // Animerer højde fra 0 til auto så svaret folder ud blødtud
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
