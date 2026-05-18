@@ -6,7 +6,10 @@ export default function Footer() {
   const t = useTranslations("footer");
 
   return (
-    <footer className="full-bleed grid grid-cols-subgrid bg-(--almost-black) text-(--background) mt-16 py-12 md:py-16 gap-y-20 text-sm">
+    <footer
+      className="full-bleed relative
+     grid grid-cols-subgrid bg-(--almost-black) text-(--background) mt-16 py-12 md:py-16 gap-y-20 text-sm"
+    >
       {/* Kontakt */}
       <div className="col-[content-start/3] md:col-[content-start/3] md:row-start-1 flex flex-col gap-6">
         <p className="font-ocr tracking-widest">{t("contact")}</p>

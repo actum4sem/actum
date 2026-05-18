@@ -38,7 +38,7 @@ export default function PriceCalculator({ materials }: Props) {
     <div className="flex flex-col justify-between h-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
         <div className="flex flex-col gap-4">
-          //her looper vi igennem alle kategorier, og finder den danske label
+          {/* her looper vi igennem alle kategorier, og finder den danske label
           for hver kategori ved at finde det første materiale i materials
           arrayet, som har den kategori, og så hente category[locale] for at få
           det på det rigtige sprog. Så laver vi en dropdown for hver kategori,
@@ -46,7 +46,7 @@ export default function PriceCalculator({ materials }: Props) {
           vælger et materiale, finder vi det valgte materiale i materials
           arrayet ud fra dets id, og gemmer det i selected state under den
           kategori. Vi har også tilføjet et custom pil-ikon ved siden af
-          dropdownen for at erstatte browserens standard dropdown-pil.
+          dropdownen for at erstatte browserens standard dropdown-pil. */}
           {categoryKeys.map((categoryKey) => {
             const categoryLabel = materials.find(
               (material) => material.category.da === categoryKey,

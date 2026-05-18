@@ -42,7 +42,7 @@ export default function HeaderScroll({
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      // Renderer det indhold, der er pakket ind i HeaderScroll-komponenten
+      {/* Renderer det indhold, der er pakket ind i HeaderScroll-komponenten */}
       {children}
     </motion.header>
   );
