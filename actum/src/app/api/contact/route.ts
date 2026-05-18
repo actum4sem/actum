@@ -2,10 +2,6 @@ import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-// Opretter forbindelse til Resend med API-nøglen fra miljøvariablerne
-// Resend bruges til at sende e-mails når en bruger udfylder kontaktformularen
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Opretter forbindelse til Supabase med URL og anonym nøgle fra miljøvariablerne
 // ! fortæller TypeScript at disse værdier altid er til stede – aldrig undefined
 const supabase = createClient(
@@ -19,6 +15,10 @@ const supabase = createClient(
 // 2. Sender en e-mail til Actum så de bliver notificeret med det samme
 
 export async function POST(request: Request) {
+  // Resend-klienten oprettes inde i handler-funktionen og ikke på modul-niveau.
+  // Det sikrer at API-nøglen først læses når ruten kaldes – ikke under Next.js build.
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   // request er den HTTP-anmodning der kommer ind når formularen sendes.
   // .json() udpakker indholdet og konverterer det fra JSON til et JavaScript-objekt.
   // Vi bruger await fordi det tager et øjeblik at læse og konvertere dataen.
