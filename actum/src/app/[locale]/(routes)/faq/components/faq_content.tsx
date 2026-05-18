@@ -4,12 +4,14 @@ import FaqPageSection from "./faq_page_section";
 import FaqGallery from "./gallery";
 
 export default async function FaqContent() {
-    const [faqs, images] = await Promise.all([getFaqs(), getFaqImages()]);
+  // Henter både faq'er og billeder samtidig for at optimere loadtiden ved at bruge Promise.all
 
-    return (
-        <section className="content grid grid-cols-subgrid">
-            <FaqPageSection faqs={faqs} />
-            <FaqGallery images={images} />
-        </section>
-    );
+  const [faqs, images] = await Promise.all([getFaqs(), getFaqImages()]);
+
+  return (
+    <section className="content grid grid-cols-subgrid">
+      <FaqPageSection faqs={faqs} />
+      <FaqGallery images={images} />
+    </section>
+  );
 }
